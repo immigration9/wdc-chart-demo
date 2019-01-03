@@ -96,6 +96,13 @@ class App extends Component {
 
     this.charts.push(chart);
   }
+
+  changeTheme = () => {
+    const { theme } = this.state;
+    this.setState({
+      theme: theme === "wh" ? "bk" : "wh"
+    })
+  }
   
   render() {
     return (
@@ -132,35 +139,38 @@ class App extends Component {
           <div>
             <button onClick={this.flush}>색상 적용</button>
           </div>
+          <div>
+            <button onClick={this.changeTheme}>테마 변경</button>
+          </div>
         </div>
         <div style={{ width: '70%' }}>
-          <div style={{ height: '250px', padding: '5px', border: '1px solid black', backgroundColor: this.state.isBlack ? 'black' : 'white'}} >
+          <div style={{ height: '250px', padding: '5px', border: `1px solid ${this.state.theme === "wh" ? 'white' : 'black'}`, backgroundColor: this.state.theme === "wh" ? 'white' : 'black'}} >
             <ChartWrapper 
               chartRef={this.getChartRef}
               id="chart_sample1"
               type="LineChart"
               data={this.state.data}
-              theme={this.state.isBlack ? "bk" : "wh" }
+              theme={this.state.theme === "wh" ? "wh" : "bk" }
               options={this.state.options}
               />
           </div>
-          <div style={{ height: '250px', padding: '5px', border: '1px solid black', backgroundColor: this.state.isBlack ? 'black' : 'white'}} >
+          <div style={{ height: '250px', padding: '5px', border: `1px solid ${this.state.theme === "wh" ? 'white' : 'black'}`, backgroundColor: this.state.theme === "wh" ? 'white' : 'black'}} >
             <ChartWrapper 
               chartRef={this.getChartRef}
               id="chart_sample2"
               type="LineChart"
               data={this.state.data}
-              theme={this.state.isBlack ? "bk" : "wh" }
+              theme={this.state.theme === "wh" ? "wh" : "bk" }
               options={this.state.options}
               />
           </div>
-          <div style={{ height: '250px', padding: '5px', border: '1px solid black', backgroundColor: this.state.isBlack ? 'black' : 'white'}} >
+          <div style={{ height: '250px', padding: '5px', border: `1px solid ${this.state.theme === "wh" ? 'white' : 'black'}`, backgroundColor: this.state.theme === "wh" ? 'white' : 'black'}} >
             <ChartWrapper 
               chartRef={this.getChartRef}
               id="chart_sample3"
               type="LineChart"
               data={this.state.data}
-              theme={this.state.isBlack ? "bk" : "wh" }
+              theme={this.state.theme === "wh" ? "wh" : "bk" }
               options={this.state.options}
               />
           </div>
